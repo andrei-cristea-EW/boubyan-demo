@@ -11,14 +11,10 @@ export default function ChatInterface() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // Debug button state
   const isButtonDisabled = isLoading || !prompt.trim() || !authToken.trim()
-  console.log('Button state:', { isLoading, promptLength: prompt.trim().length, authTokenLength: authToken.trim().length, isDisabled: isButtonDisabled })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    console.log('Submit attempt:', { prompt: prompt.trim(), authToken: authToken.trim() });
     
     if (!prompt.trim()) {
       setError('Please enter a prompt')
