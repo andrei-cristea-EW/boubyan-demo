@@ -21,8 +21,18 @@ export class AgentService {
   static async executeAgent(userPrompt: string, authToken: string): Promise<string> {
     const bearerToken = import.meta.env.VITE_INTEGRAIL_BEARER_TOKEN;
     
+    console.log('Environment check:', {
+      bearerToken: bearerToken ? 'Present' : 'Missing',
+      accountId: this.ACCOUNT_ID || 'Missing',
+      agentId: this.AGENT_ID || 'Missing'
+    });
+    
     if (!bearerToken) {
       throw new Error('Bearer token not configured');
+    }
+    
+    if (!this.ACCOUNT_ID || !this.AGENT_ID) {
+      throw new Error('Account ID or Agent ID not configured');
     }
 
     try {

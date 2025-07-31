@@ -11,8 +11,14 @@ export default function ChatInterface() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
 
+  // Debug button state
+  const isButtonDisabled = isLoading || !prompt.trim() || !authToken.trim()
+  console.log('Button state:', { isLoading, promptLength: prompt.trim().length, authTokenLength: authToken.trim().length, isDisabled: isButtonDisabled })
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    console.log('Submit attempt:', { prompt: prompt.trim(), authToken: authToken.trim() });
     
     if (!prompt.trim()) {
       setError('Please enter a prompt')
@@ -45,7 +51,7 @@ export default function ChatInterface() {
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <div className="text-slate-400 text-sm">Powered by</div>
-            <img src="/logo_everworker.svg" alt="Everworker" className="h-8 opacity-100 contrast-125" />
+            <img src={`${import.meta.env.BASE_URL}logo_everworker.svg`} alt="Everworker" className="h-8 opacity-100 contrast-125" />
           </div>
           
           {/* Auth Token Input */}
@@ -78,10 +84,10 @@ export default function ChatInterface() {
               />
               <button
                 type="submit"
-                disabled={isLoading || !prompt.trim() || !authToken.trim()}
+                disabled={isButtonDisabled}
                 className={cn(
                   "cyber-button flex items-center gap-2 shrink-0",
-                  (isLoading || !prompt.trim() || !authToken.trim()) && "opacity-50 cursor-not-allowed"
+                  isButtonDisabled && "opacity-50 cursor-not-allowed"
                 )}
               >
                 {isLoading ? (
