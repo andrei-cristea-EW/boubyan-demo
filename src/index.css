@@ -17,6 +17,38 @@
 }
 
 @layer components {
+  .cyber-purple {
+    color: #8B5CF6;
+  }
+  
+  .cyber-blue {
+    color: #0EA5E9;
+  }
+  
+  .cyber-pink {
+    color: #EC4899;
+  }
+  
+  .cyber-green {
+    color: #10B981;
+  }
+  
+  .text-cyber-purple {
+    @apply text-violet-500;
+  }
+  
+  .text-cyber-blue {
+    @apply text-sky-500;
+  }
+  
+  .text-cyber-pink {
+    @apply text-pink-500;
+  }
+  
+  .text-cyber-green {
+    @apply text-emerald-500;
+  }
+
   .gradient-bg {
     @apply relative overflow-hidden;
   }
@@ -46,15 +78,78 @@
   }
   
   .cyber-input {
-    @apply bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-cyber-purple focus:ring-1 focus:ring-cyber-purple focus:outline-none transition-all duration-200;
+    @apply bg-slate-800/50 border border-slate-600/50 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 focus:outline-none transition-all duration-200;
   }
   
   .cyber-button {
-    @apply bg-gradient-to-r from-cyber-purple to-cyber-blue hover:from-cyber-purple/80 hover:to-cyber-blue/80 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
+    @apply bg-gradient-to-r from-violet-500 to-sky-500 hover:from-violet-500/80 hover:to-sky-500/80 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
     filter: contrast(1.2) saturate(1.1);
   }
   
   .cyber-auth-input {
     @apply bg-slate-800/30 border border-slate-700/30 rounded text-xs px-2 py-1 text-slate-300 placeholder-slate-500 focus:border-slate-500 focus:outline-none font-mono;
+  }
+  
+  /* Nested list styling */
+  .markdown-content ul ul,
+  .markdown-content ol ol,
+  .markdown-content ul ol,
+  .markdown-content ol ul {
+    @apply mt-1 mb-1 ml-4;
+  }
+  
+  .markdown-content li {
+    @apply mb-1;
+  }
+  
+  .markdown-content li > p {
+    @apply mb-1 mt-0;
+  }
+  
+  .markdown-content ol {
+    counter-reset: item;
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .markdown-content ol > li {
+    display: block;
+    margin-bottom: 0.5em;
+    padding-left: 2em;
+    position: relative;
+  }
+  
+  .markdown-content ol > li:before {
+    content: counter(item) ". ";
+    counter-increment: item;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .markdown-content ol > li > p {
+    margin: 0;
+    display: inline;
+  }
+  
+  /* Table styling */
+  .markdown-content table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .markdown-content th {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #475569;
+  }
+  
+  .markdown-content tr:nth-child(even) {
+    background-color: rgba(51, 65, 85, 0.1);
+  }
+  
+  .markdown-content tr:hover {
+    background-color: rgba(139, 92, 246, 0.1);
   }
 }
