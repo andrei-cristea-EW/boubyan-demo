@@ -4,11 +4,19 @@ import { AgentService } from '../services/agentService'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { cn } from '../lib/utils'
+import UsageChart from './UsageChart'
+
+interface ChartDataItem {
+  product: string
+  currentUsage: number
+  proposedLicenses: number
+}
 
 interface ParsedResponse {
   usage: string
   proposal: string
   suggestions: string
+  chartData?: ChartDataItem[]
 }
 
 export default function ChatInterface() {
@@ -236,6 +244,11 @@ export default function ChatInterface() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Chart Section - Full width */}
+                    {parsedResponse.chartData && parsedResponse.chartData.length > 0 && (
+                      <UsageChart data={parsedResponse.chartData} />
+                    )}
 
                     {/* Bottom row: Suggestions full width */}
                     <div className="cyber-card p-6">

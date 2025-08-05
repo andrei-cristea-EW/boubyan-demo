@@ -1,0 +1,5 @@
+{ 
+  "usage": "## Current Microsoft Word License Usage\n\n- **Total Installations**: 2\n- **Software Entries**: 2 different entries identified as Microsoft Word\n - \"Word\" by Microsoft Corporation (1 network installation)\n - \"Microsoft Word\" by Microsoft Corporation (1 network installation)", 
+  "proposal": "## Microsoft Word License Proposal\n\n- **Vendor**: Microsoft\n- **Software**: Word\n- **Number of Licenses**: 10\n- **Cost per License**: 30 KD\n- **Total Cost**: 300 KD", 
+  "suggestions": "## License Optimization Recommendations\n\n1. **Reduce License Count**: The current proposal includes 10 licenses, but actual usage shows only 2 installations. Consider reducing the number of licenses to 3-4 to account for current usage plus minimal growth.\n\n2. **Potential Savings**: Reducing from 10 to 4 licenses would save 180 KD (6 licenses × 30 KD).\n\n3. **Usage Verification**: Confirm if there are any planned deployments that would require additional licenses before finalizing the reduction.\n\n4. **Negotiate Volume Pricing**: If maintaining higher license counts, request volume discounts to reduce the per-license cost." 
+}
