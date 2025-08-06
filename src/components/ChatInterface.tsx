@@ -1,10 +1,14 @@
 import { useState } from 'react'
-import { Send, Key } from 'lucide-react'
+import { Send } from 'lucide-react'
 import { AgentService } from '../services/agentService'
+import { useAuth } from '../contexts/AuthContext'
+import { AuthService } from '../services/authService'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { cn } from '../lib/utils'
 import UsageChart from './UsageChart'
+import AuthButton from './AuthButton'
+import AuthInstructions from './AuthInstructions'
 
 interface ChartDataItem {
   product: string
@@ -20,14 +24,15 @@ interface ParsedResponse {
 }
 
 export default function ChatInterface() {
+  const { isAuthenticated } = useAuth()
   const [prompt, setPrompt] = useState('')
-  const [authToken, setAuthToken] = useState('')
   const [response, setResponse] = useState('')
   const [parsedResponse, setParsedResponse] = useState<ParsedResponse | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const isButtonDisabled = isLoading || !prompt.trim() || !authToken.trim()
+  const authToken = AuthService.getCurrentToken()
+  const isButtonDisabled = isLoading || !prompt.trim() || !isAuthenticated || !authToken
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -37,8 +42,8 @@ export default function ChatInterface() {
       return
     }
     
-    if (!authToken.trim()) {
-      setError('Please enter an authentication token')
+    if (!authToken) {
+      setError('Please authenticate first')
       return
     }
 
@@ -112,18 +117,12 @@ export default function ChatInterface() {
             <img src={`${import.meta.env.BASE_URL}logo_everworker.svg`} alt="Everworker" className="h-8 opacity-100 contrast-125" />
           </div>
           
-          {/* Auth Token Input */}
-          <div className="relative">
-            <Key className="absolute left-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-slate-500" />
-            <input
-              type="password"
-              placeholder="Desktop Central Auth Token"
-              value={authToken}
-              onChange={(e) => setAuthToken(e.target.value)}
-              className="cyber-auth-input pl-6 w-64"
-            />
-          </div>
+          {/* Authentication */}
+          <AuthButton />
         </div>
+
+        {/* Authentication Instructions - Only show when not authenticated */}
+        {!isAuthenticated && <AuthInstructions />}
 
         {/* Main Chat Card */}
         <div className={cn(

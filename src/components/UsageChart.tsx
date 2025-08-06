@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -66,7 +65,7 @@ export default function UsageChart({ data }: UsageChartProps) {
           font: {
             family: 'Inter, system-ui, sans-serif',
             size: 12,
-            weight: '500',
+            weight: 500,
           },
           padding: 20,
           usePointStyle: true,
@@ -80,7 +79,7 @@ export default function UsageChart({ data }: UsageChartProps) {
         font: {
           family: 'Inter, system-ui, sans-serif',
           size: 16,
-          weight: '600',
+          weight: 600,
         },
         padding: {
           top: 10,
@@ -98,7 +97,7 @@ export default function UsageChart({ data }: UsageChartProps) {
         titleFont: {
           family: 'Inter, system-ui, sans-serif',
           size: 13,
-          weight: '600',
+          weight: 600,
         },
         bodyFont: {
           family: 'Inter, system-ui, sans-serif',
@@ -121,14 +120,13 @@ export default function UsageChart({ data }: UsageChartProps) {
       x: {
         grid: {
           color: 'rgba(71, 85, 105, 0.3)', // slate-600 with transparency
-          drawBorder: false,
         },
         ticks: {
           color: '#cbd5e1', // slate-300
           font: {
             family: 'Inter, system-ui, sans-serif',
             size: 11,
-            weight: '500',
+            weight: 500,
           },
           maxRotation: 45,
           minRotation: 0,
@@ -141,14 +139,13 @@ export default function UsageChart({ data }: UsageChartProps) {
         beginAtZero: true,
         grid: {
           color: 'rgba(71, 85, 105, 0.3)', // slate-600 with transparency
-          drawBorder: false,
         },
         ticks: {
           color: '#cbd5e1', // slate-300
           font: {
             family: 'Inter, system-ui, sans-serif',
             size: 11,
-            weight: '500',
+            weight: 500,
           },
           stepSize: 1,
           callback: function(value) {
