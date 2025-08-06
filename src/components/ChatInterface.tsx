@@ -8,7 +8,6 @@ import remarkGfm from 'remark-gfm'
 import { cn } from '../lib/utils'
 import UsageChart from './UsageChart'
 import AuthButton from './AuthButton'
-import AuthInstructions from './AuthInstructions'
 
 interface ChartDataItem {
   product: string
@@ -120,9 +119,6 @@ export default function ChatInterface() {
           {/* Authentication */}
           <AuthButton />
         </div>
-
-        {/* Authentication Instructions - Only show when not authenticated */}
-        {!isAuthenticated && <AuthInstructions />}
 
         {/* Main Chat Card */}
         <div className={cn(
